@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="MaloWLib">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="MaloWLib\MaloWNetwork">
+      <UniqueIdentifier>{20313194-f3c6-43d4-8851-ea3f881f0ec5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Source\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\MaloWLib\Process.cpp">
+      <Filter>MaloWLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\MaloWLib\MaloWNetwork\ClientChannel.cpp">
+      <Filter>MaloWLib\MaloWNetwork</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\MaloWLib\MaloWNetwork\NetworkServer.cpp">
+      <Filter>MaloWLib\MaloWNetwork</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\MaloWLib\MaloWNetwork\ServerChannel.cpp">
+      <Filter>MaloWLib\MaloWNetwork</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Server.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\GameInstance.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\LobbyHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Source\stdafx.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\MaloWLib\MaloWNetwork\ClientChannel.h">
+      <Filter>MaloWLib\MaloWNetwork</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\MaloWLib\MaloWNetwork\NetworkPacket.h">
+      <Filter>MaloWLib\MaloWNetwork</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\MaloWLib\MaloWNetwork\NetworkServer.h">
+      <Filter>MaloWLib\MaloWNetwork</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\MaloWLib\MaloWNetwork\ServerChannel.h">
+      <Filter>MaloWLib\MaloWNetwork</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Server.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\GameInstance.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\LobbyHandler.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
