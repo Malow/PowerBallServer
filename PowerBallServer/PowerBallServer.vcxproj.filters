@@ -16,6 +16,9 @@
     <Filter Include="MaloWLib\MaloWNetwork">
       <UniqueIdentifier>{20313194-f3c6-43d4-8851-ea3f881f0ec5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Database">
+      <UniqueIdentifier>{717a0403-7e43-4b98-8e59-4cc0efbb9bbe}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Source\main.cpp">
@@ -42,6 +45,12 @@
     <ClCompile Include="..\Source\LobbyHandler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\Source\Authenticator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Source\Database\Database.cpp">
+      <Filter>Database</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Source\stdafx.h">
@@ -67,6 +76,12 @@
     </ClInclude>
     <ClInclude Include="..\Source\LobbyHandler.h">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Authenticator.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Database\Database.h">
+      <Filter>Database</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

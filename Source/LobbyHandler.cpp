@@ -32,7 +32,6 @@ LobbyHandler::~LobbyHandler()
 void LobbyHandler::AddClient(MaloW::ClientChannel* cc)
 {
 	cc->setNotifier(this);
-	cc->Start();
 	this->lobbyClients.add(cc);
 }
 
@@ -49,7 +48,7 @@ void LobbyHandler::Life()
 
 			for(int i = 0; i < this->lobbyClients.size(); i++)
 			{
-				if(id == this->lobbyClients.get(i)->getID())
+				if(id == this->lobbyClients.get(i)->getClientID())
 				{
 					cc = this->lobbyClients.get(i);
 					i == this->lobbyClients.size();

@@ -68,6 +68,7 @@
     <IntDir>../../PowerBallServerIntermediate/</IntDir>
     <IncludePath>..\Source\MaloWLib\MaloWNetwork;..\Source\MaloWLib;..\Source;$(IncludePath)</IncludePath>
     <TargetName>$(ProjectName)D32</TargetName>
+    <LibraryPath>$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -75,6 +76,7 @@
     <IntDir>../../PowerBallServerIntermediate/</IntDir>
     <IncludePath>..\Source\MaloWLib\MaloWNetwork;..\Source\MaloWLib;..\Source;$(IncludePath)</IncludePath>
     <TargetName>$(ProjectName)D64</TargetName>
+    <LibraryPath>$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -82,6 +84,7 @@
     <IntDir>../../PowerBallServerIntermediate/</IntDir>
     <IncludePath>..\Source\MaloWLib\MaloWNetwork;..\Source\MaloWLib;..\Source;$(IncludePath)</IncludePath>
     <TargetName>$(ProjectName)R32</TargetName>
+    <LibraryPath>$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -89,6 +92,7 @@
     <IntDir>../../PowerBallServerIntermediate/</IntDir>
     <IncludePath>..\Source\MaloWLib\MaloWNetwork;..\Source\MaloWLib;..\Source;$(IncludePath)</IncludePath>
     <TargetName>$(ProjectName)R64</TargetName>
+    <LibraryPath>$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -101,6 +105,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -114,6 +119,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -131,6 +137,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -148,9 +155,12 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\Source\Authenticator.cpp" />
+    <ClCompile Include="..\Source\Database\Database.cpp" />
     <ClCompile Include="..\Source\GameInstance.cpp" />
     <ClCompile Include="..\Source\LobbyHandler.cpp" />
     <ClCompile Include="..\Source\main.cpp" />
@@ -161,6 +171,8 @@
     <ClCompile Include="..\Source\Server.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Source\Authenticator.h" />
+    <ClInclude Include="..\Source\Database\Database.h" />
     <ClInclude Include="..\Source\GameInstance.h" />
     <ClInclude Include="..\Source\LobbyHandler.h" />
     <ClInclude Include="..\Source\MaloWLib\MaloWNetwork\ClientChannel.h" />

@@ -3,12 +3,12 @@
 #include "stdafx.h"
 #include "NetworkServer.h"
 #include "GameInstance.h"
-#include "LobbyHandler.h"
+#include "Authenticator.h"
 
 class Server : public MaloW::NetworkServer
 {
 private:
-	LobbyHandler lh;
+	Authenticator auth;
 	int totClients;
 
 public:
@@ -16,8 +16,9 @@ public:
 	virtual ~Server();
 	void ClientConnected(MaloW::ClientChannel* cc);
 
+	// Statistics
 	int GetConnectedClientsSinceStart() const { return this->totClients; }
-	int GetClientsInLobby() const { return this->lh.GetLobbyClientsSize(); }
-	int GetActiveGames() const { return this->lh.GetGamesSize(); }
-
+	int GetFailedAuthenticationsSinceStart() { return this->totClients - this->auth.GetAuthenticatedClientsSinceStart(); }
+	int GetClientsInLobby() const { return this->auth.GetClientsInLobby(); }
+	int GetActiveGames() const { return this->auth.GetActiveGames(); }
 };

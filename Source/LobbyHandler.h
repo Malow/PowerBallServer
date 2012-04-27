@@ -18,6 +18,11 @@ public:
 	void AddClient(MaloW::ClientChannel* cc);
 
 	void Life();
+
+
+
+
+	// Statistics
 	int GetLobbyClientsSize() const { return this->lobbyClients.size(); }
 	int GetGamesSize() const { return this->games.size(); }
 };
