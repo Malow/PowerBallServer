@@ -51,6 +51,9 @@
     <ClCompile Include="..\Source\Database\Database.cpp">
       <Filter>Database</Filter>
     </ClCompile>
+    <ClCompile Include="..\Source\Client.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Source\stdafx.h">
@@ -82,6 +85,9 @@
     </ClInclude>
     <ClInclude Include="..\Source\Database\Database.h">
       <Filter>Database</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Source\Client.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

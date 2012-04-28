@@ -4,8 +4,9 @@ using namespace MaloW;
 
 int GameInstance::NEXTGAMEID = 0;
 
-GameInstance::GameInstance()
+GameInstance::GameInstance(GameDescription* gd)
 {
+	this->desc = gd;
 	this->GameID = this->NEXTGAMEID;
 	this->NEXTGAMEID++;
 }
@@ -21,6 +22,9 @@ GameInstance::~GameInstance()
 
 	while(this->clients.size() > 0)
 		delete this->clients.getAndRemove(0);
+
+	if(this->desc)
+		delete this->desc;
 }
 
 JOIN_GAME_ERRORS GameInstance::JoinGame(MaloW::ClientChannel* cc)

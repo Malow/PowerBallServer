@@ -34,7 +34,7 @@ int main()
 		string input = "";
 		cout << "PowerBall Master server" << endl;
 		cout << "Connected Clients since start: " << server->GetConnectedClientsSinceStart() << endl;
-		cout << "Failed client-authentications since start: " << server->GetFailedAuthenticationsSinceStart() << endl;
+		cout << "Non-authed clients since start: " << server->GetFailedAuthenticationsSinceStart() << endl;
 		cout << "Clients currently in lobby: " << server->GetClientsInLobby() << endl;
 		cout << "Current active games (playing or waiting to get started): " << server->GetActiveGames() << endl;
 

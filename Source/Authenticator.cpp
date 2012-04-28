@@ -4,7 +4,7 @@ using namespace MaloW;
 
 Authenticator::Authenticator()
 {
-	this->db = new Database("127.0.0.1", "root", "fogdebth3a", "Powerball");
+	this->db = new Database();
 	this->lh.Start();
 	this->totAuthed = 0;
 }
@@ -13,6 +13,13 @@ Authenticator::~Authenticator()
 {
 	this->lh.Close();
 	this->lh.WaitUntillDone();
+
+	for(int i = 0; i < this->nonAuthed.size(); i++)
+		this->nonAuthed.get(i)->Close();
+	for(int i = 0; i < this->nonAuthed.size(); i++)
+		this->nonAuthed.get(i)->WaitUntillDone();
+	while(this->nonAuthed.size() > 0)
+		delete this->nonAuthed.getAndRemove(0);
 
 	if(this->db)
 		delete this->db;
@@ -37,12 +44,14 @@ void Authenticator::Life()
 			std::string msg = ((NetworkPacket*)ev)->getMessage();
 			int id = ((NetworkPacket*)ev)->getID();
 
+			int arraySlot = 0;
 			for(int i = 0; i < this->nonAuthed.size(); i++)
 			{
 				if(id == this->nonAuthed.get(i)->getClientID())
 				{
 					cc = this->nonAuthed.get(i);
-					i == this->nonAuthed.size();
+					arraySlot = i;
+					i = this->nonAuthed.size();
 				}
 			}
 			if(!cc)
@@ -51,20 +60,19 @@ void Authenticator::Life()
 			{
 				int splitpos = msg.find(" ");
 
-				string email = msg.substr(0, splitpos);
+				string account = msg.substr(0, splitpos);
 				string password = msg.substr(splitpos + 1);
 
-				
 
-				// Decipher string here and do shit accordingly
-
-				// if(Authenticated correct) this->lh.AddClient(cc); this->nonAuthed.remove(cc);
-				// else drop?{
-
-				if(msg == "MALOW@SPRAY.SE 12345")
-					cc->sendData("YOU ARE AUTHED");
+				if(this->db->VerifyUser(account, password, "accounts.txt"))
+				{
+					cc->sendData("AUTH SUCCESSFUL");
+					Client* cl = new Client(cc, account);
+					this->lh.AddClient(cl);
+					this->nonAuthed.remove(arraySlot);
+				}
 				else
-					cc->sendData("AUTH FAILED");
+					cc->sendData("AUTH FAILED, WRONG PW OR ACC");
 			}
 		}
 		delete ev;

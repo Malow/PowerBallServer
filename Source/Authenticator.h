@@ -2,6 +2,7 @@
 
 #include "LobbyHandler.h"
 #include "Database\Database.h"
+#include "Client.h"
 
 class Authenticator : public MaloW::Process
 {

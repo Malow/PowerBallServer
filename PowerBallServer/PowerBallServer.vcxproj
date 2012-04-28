@@ -160,6 +160,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\Source\Authenticator.cpp" />
+    <ClCompile Include="..\Source\Client.cpp" />
     <ClCompile Include="..\Source\Database\Database.cpp" />
     <ClCompile Include="..\Source\GameInstance.cpp" />
     <ClCompile Include="..\Source\LobbyHandler.cpp" />
@@ -172,6 +173,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Source\Authenticator.h" />
+    <ClInclude Include="..\Source\Client.h" />
     <ClInclude Include="..\Source\Database\Database.h" />
     <ClInclude Include="..\Source\GameInstance.h" />
     <ClInclude Include="..\Source\LobbyHandler.h" />

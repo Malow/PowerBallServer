@@ -4,18 +4,19 @@
 #include "Process.h"
 #include "GameInstance.h"
 #include "ClientChannel.h"
+#include "Client.h"
 
 class LobbyHandler : public MaloW::Process
 {
 private:
 	MaloW::Array<GameInstance*> games;
-	MaloW::Array<MaloW::ClientChannel*> lobbyClients;
+	MaloW::Array<Client*> lobbyClients;
 
 public:
 	LobbyHandler();
 	virtual ~LobbyHandler();
 
-	void AddClient(MaloW::ClientChannel* cc);
+	void AddClient(Client* cl);
 
 	void Life();
 
