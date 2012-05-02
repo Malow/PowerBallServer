@@ -31,6 +31,7 @@ JOIN_GAME_ERRORS GameInstance::JoinGame(MaloW::ClientChannel* cc)
 {
 	cc->setNotifier(this);
 	this->clients.add(cc);
+	cc->sendData("NOW IN GAME " + MaloW::convertNrToString(this->GameID));
 	return JOIN_SUCCESS;
 }
 
@@ -57,6 +58,13 @@ void GameInstance::Life()
 				MaloW::Debug("Network packet recieved with a client-id that doesn't exsist in my game-clients array");
 
 			// Decipher string here and do shit accordingly
+
+			if(msg == "")	// check and do something
+			{
+
+			}
+			else if(msg == "PING")
+				cc->sendData("PING");
 
 			// Leave game, send message to lobbyhandler and give ClientChannel to it.
 		}

@@ -47,3 +47,32 @@ int main()
 	delete server;
 	return 0;
 };
+
+
+/*
+Network Interface:
+
+Authenticator:
+Client will get message "AUTH YOURSELF".
+Client authenticates himself by sending "EMAIL PASSWORD".
+Client can send "PING" where the server instantly returns the message "PING".
+
+
+LobbyHandler:
+When the client has sent correct account and password and authenticated himself he will get to the LobbyHandler.
+LobbyHandler will send "NOW IN LOBBY" when auth is successfull.
+Client can send "PING" where the server instantly returns the message "PING".
+
+Not done:
+Client can send "CREATE GAME" (FOLLOWED BY SETTINGS ETC, NOT YET IMPLEMENTED), where server returns an ID to connect to.
+"LEAVE GAME"
+"JOIN GAME"
+
+
+GameInstance:
+When joining or creating a game a client gets sent to GameInstance. When successfull join client will get sent "NOW IN GAME " + this->GameID.
+Client can send "PING" where the server instantly returns the message "PING".
+
+
+
+*/

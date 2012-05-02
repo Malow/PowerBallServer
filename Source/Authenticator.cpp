@@ -71,6 +71,8 @@ void Authenticator::Life()
 					this->lh.AddClient(cl);
 					this->nonAuthed.remove(arraySlot);
 				}
+				else if(msg == "PING")
+					cc->sendData("PING");
 				else
 					cc->sendData("AUTH FAILED, WRONG PW OR ACC");
 			}

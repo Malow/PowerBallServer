@@ -64,6 +64,8 @@ void LobbyHandler::Life()
 				cc->GetClientChannel()->sendData("CREATING GAME");
 				//GameInstance* game 
 			}
+			else if(msg == "PING")
+				cc->GetClientChannel()->sendData("PING");
 		}
 		delete ev;
 	}
