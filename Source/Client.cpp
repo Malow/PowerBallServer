@@ -4,6 +4,7 @@ Client::Client(MaloW::ClientChannel* cc, string username)
 {
 	this->cc = cc;
 	this->username = username;
+	this->aliveStatus = true;
 }
 
 Client::~Client()

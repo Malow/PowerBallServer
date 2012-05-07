@@ -21,6 +21,10 @@ Server is threaded, Authenticator is threaded, Lobbyhandler is threaded, every G
 
 int main()
 {
+#if defined(DEBUG) || defined(_DEBUG)
+	myInitMemoryCheck();
+#endif
+
 	int ListenPort = 10000;
 
 	MaloW::ClearDebug();
@@ -51,6 +55,9 @@ int main()
 
 /*
 Network Interface:
+All steps will repeatedly send "ALIVE CHECK" where you just answer "I AM ALIVE". This is to remove clients that has disconnected without closing the socket etc.
+When connecting you will get to the Authenticator.
+
 
 Authenticator:
 Client will get message "AUTH YOURSELF".
@@ -64,14 +71,22 @@ LobbyHandler will send "NOW IN LOBBY" when auth is successfull.
 Client can send "PING" where the server instantly returns the message "PING".
 
 Not done:
-Client can send "CREATE GAME" (FOLLOWED BY SETTINGS ETC, NOT YET IMPLEMENTED), where server returns an ID to connect to.
-"LEAVE GAME"
-"JOIN GAME"
+Client can send "CREATE GAME <MAXPLAYERS> <MODE>" (FOLLOWED BY SETTINGS ETC, NOT YET IMPLEMENTED), where server returns "GAME <ID> CREATED".
+"JOIN GAME <ID>".
+"GET SERVER LIST" will get packet with nr of servers and then a list of every server with info about it, ex:
+	NROFSERVERS 30
+	SERVER: <ID> <CURPLAYERS> <MAXPLAYERS> <MODE> <CREATOR>
+	SERVER: <ID> <CURPLAYERS> <MAXPLAYERS> <MODE> <CREATOR>
+	SERVER: <ID> <CURPLAYERS> <MAXPLAYERS> <MODE> <CREATOR>
+	ENDOFSERVERLIST
 
 
 GameInstance:
 When joining or creating a game a client gets sent to GameInstance. When successfull join client will get sent "NOW IN GAME " + this->GameID.
 Client can send "PING" where the server instantly returns the message "PING".
+"LEAVE GAME". Returns you to LobbyHandler. Sends "RETURNING TO LOBBY"
+"YOU ARE NOW HOST" if host leaves some1 gets promoted.
+"START GAME" starts the game and sends "STARTING GAME" to all clients in the game, returns "YOU CANT START THE GAME, YOU ARE NOT HOST" if ur not the host.
 
 
 

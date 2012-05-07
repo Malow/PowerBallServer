@@ -144,6 +144,9 @@ MaloW::Array<MaloW::Array<string>*>* Database::ExecuteQuery(string query)
 
 bool Database::VerifyUser(string account, string pass, string txtfile)
 {
+	if(account.length() < 1 || pass.length() < 1)
+		return false;
+
 	ifstream file;
 	file.open(txtfile.c_str());
 	if(!file)
@@ -154,12 +157,15 @@ bool Database::VerifyUser(string account, string pass, string txtfile)
 	while(!file.eof())
 	{
 		string line = "";
+		string acc = "";
+		string pw = "";
 		getline(file, line);
-		if(line.substr(0, account.size()) == account)
-		{
-			if(line.substr(account.size() + 1) == pass)
+		int split = line.find(" ");
+		acc = line.substr(0, split);
+		pw = line.substr(split + 1);
+
+		if(acc == account && pw == pass)
 				return true;
-		}
 	}
 	return false;
 }

@@ -20,6 +20,7 @@
 
 /*! constants */
 #define PI (3.14159265358979323846f)
+#define NETWORK_ALIVE_CHECK_INTERVAL 60000.0f	// In ms
 
 /*! functions */
 #define SAFE_RELEASE(x) { if(x) { (x)->Release(); (x) = NULL; } }

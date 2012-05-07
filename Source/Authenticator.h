@@ -4,16 +4,48 @@
 #include "Database\Database.h"
 #include "Client.h"
 
+struct NonAuthedClient
+{
+	MaloW::ClientChannel* cc;
+	bool aliveStatus;
+
+	NonAuthedClient()
+	{
+		this->cc = NULL;
+		this->aliveStatus = true;
+	}
+
+	NonAuthedClient(MaloW::ClientChannel* cc)
+	{
+		this->cc = cc;
+		this->aliveStatus = true;
+	}
+	/*
+	virtual ~NonAuthedClient()
+	{
+		cc->Close();
+		cc->WaitUntillDone();
+		SAFE_DELETE(cc);
+	}
+	*/
+};
+
 class Authenticator : public MaloW::Process
 {
 private:
 	int totAuthed;
 	LobbyHandler lh;
-	MaloW::Array<MaloW::ClientChannel*> nonAuthed;
+	MaloW::Array<NonAuthedClient> nonAuthed;
 	Database* db;
+	
+	// for timer
+	float PCFreq;
+	__int64 prevTimeStamp;
+	float AliveTimer;
 
 
 public:
+	void CheckAliveStatusOnClients();
 	Authenticator();
 	virtual ~Authenticator();
 
