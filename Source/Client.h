@@ -3,11 +3,13 @@
 #include "stdafx.h"
 #include "ClientChannel.h"
 
+
 class Client
 {
 private:
 	MaloW::ClientChannel* cc;
 	string username;
+	string team;
 
 
 public:
@@ -18,6 +20,8 @@ public:
 	MaloW::ClientChannel* GetClientChannel() { return this->cc; }
 	int GetClientID() { return this->cc->getClientID(); }
 	string GetUserName() { return this->username; }
+	string GetTeam() const { return this->team; }
+	void SetTeam(string t) { this->team = t; }
 
 };
 

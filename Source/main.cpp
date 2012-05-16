@@ -55,23 +55,21 @@ int main()
 
 /*
 Network Interface:
-All steps will repeatedly send "ALIVE CHECK" where you just answer "I AM ALIVE". This is to remove clients that has disconnected without closing the socket etc.
+All steps will repeatedly send "ALIVE CHECK" where you just answer "I AM ALIVE". This is to remove clients that has disconnected without closing the socket and fake / bugged clients.
 When connecting you will get to the Authenticator.
 
 
 Authenticator:
 Client will get message "AUTH YOURSELF".
 Client authenticates himself by sending "EMAIL PASSWORD".
-Client can send "PING" where the server instantly returns the message "PING".
+Client can send "PING" where the server instantly returns the message "PING" so that you can time it client-side.
 
 
 LobbyHandler:
 When the client has sent correct account and password and authenticated himself he will get to the LobbyHandler.
 LobbyHandler will send "NOW IN LOBBY" when auth is successfull.
-Client can send "PING" where the server instantly returns the message "PING".
-
-Not done:
-Client can send "CREATE GAME <MAXPLAYERS> <MODE>" (FOLLOWED BY SETTINGS ETC, NOT YET IMPLEMENTED), where server returns "GAME <ID> CREATED".
+Client can send "PING" where the server instantly returns the message "PING" so that you can time it client-side.
+Client can send "CREATE GAME <MAXPLAYERS> <MODE>" (FOLLOWED BY SETTINGS ETC, NOT YET IMPLEMENTED), where server returns "GAME <ID> CREATED". Returns "BAD DATA FOR CREATING A GAME: " + msg if failed.
 "JOIN GAME <ID>".
 "GET SERVER LIST" will get packet with nr of servers and then a list of every server with info about it, ex:
 	NROFSERVERS 30
@@ -83,11 +81,17 @@ Client can send "CREATE GAME <MAXPLAYERS> <MODE>" (FOLLOWED BY SETTINGS ETC, NOT
 
 GameInstance:
 When joining or creating a game a client gets sent to GameInstance. When successfull join client will get sent "NOW IN GAME " + this->GameID.
-Client can send "PING" where the server instantly returns the message "PING".
-"LEAVE GAME". Returns you to LobbyHandler. Sends "RETURNING TO LOBBY"
-"YOU ARE NOW HOST" if host leaves some1 gets promoted.
-"START GAME" starts the game and sends "STARTING GAME" to all clients in the game, returns "YOU CANT START THE GAME, YOU ARE NOT HOST" if ur not the host.
+Client can send "PING" where the server instantly returns the message "PING" so that you can time it client-side.
+In gamelobby:
+	"LEAVE GAME". Returns you to LobbyHandler. Sends "RETURNING TO LOBBY"
+	"YOU ARE NOW HOST" if host leaves some1 gets promoted.
+	"START GAME" starts the game and sends "STARTING GAME" to all clients in the game, returns "YOU CANT START THE GAME, YOU ARE NOT HOST" if ur not the host.
+	"JOIN TEAM " + "BLUE" || "RED" || "NONE" joins a team. Returns "JOINED TEAM " + "BLUE" || "RED" || "NONE" + " SUCCESSFULLY"
+	"PLAYER JOINED: " + id + " " + username + " " + team		when a player joins a game this gets sent. When you connect you will get this sent for every player allready in the game.
+	"PLAYER LEFT: " + id	when a player leaves a game this will be sent.
+	"PLAYER JOINED TEAM " + id + " " + "BLUE" || "RED" || "NONE"	when a player changes team.
 
-
+Ingame:
+	
 
 */

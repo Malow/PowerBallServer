@@ -23,9 +23,12 @@ struct NonAuthedClient
 	/*
 	virtual ~NonAuthedClient()
 	{
-		cc->Close();
-		cc->WaitUntillDone();
-		SAFE_DELETE(cc);
+		if(this->cc)
+		{
+			cc->Close();
+			cc->WaitUntillDone();
+			SAFE_DELETE(cc);
+		}
 	}
 	*/
 };

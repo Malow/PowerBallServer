@@ -26,7 +26,12 @@ Authenticator::~Authenticator()
 	this->lh.WaitUntillDone();
 
 	while(this->nonAuthed.size() > 0)
-		this->nonAuthed.remove(0);
+	{
+		NonAuthedClient na = this->nonAuthed.getAndRemove(0);
+		na.cc->Close();
+		na.cc->WaitUntillDone();
+		SAFE_DELETE(na.cc);
+	}
 
 	if(this->db)
 		delete this->db;

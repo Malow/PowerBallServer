@@ -66,6 +66,9 @@ int LobbyHandler::CreateGameFunc(string msg, Client* cc)
 	string temp = msg.substr(12);
 	int maxPl = atoi(temp.substr(0, temp.find(" ")).c_str());
 	int mode = atoi(temp.substr(temp.find(" ") + 1).c_str());
+
+	if(maxPl == 0)
+		return -1;
 				
 	GameDescription* gd = new GameDescription();
 	gd->MaxPlayers = maxPl;
@@ -128,7 +131,10 @@ void LobbyHandler::HandleMessage(string msg, Client* cc, int clientSlot)
 	if(msg.substr(0, 11) == "CREATE GAME")		// "CREATE GAME <MAXPLAYERS> <MODE>"
 	{
 		int gameid = this->CreateGameFunc(msg, cc);
-		this->JoinGameFunc(gameid, cc, clientSlot);
+		if(gameid == -1)
+			cc->GetClientChannel()->sendData("BAD DATA FOR CREATING A GAME: " + msg);
+		else
+			this->JoinGameFunc(gameid, cc, clientSlot);
 	}
 	else if(msg.substr(0, 9) == "JOIN GAME")	//"JOIN GAME <ID>"
 	{
